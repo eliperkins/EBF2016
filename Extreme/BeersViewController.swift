@@ -57,7 +57,7 @@ extension BeersViewController {
 
         let triedAction = UITableViewRowAction(style: .Default, title: "Tried") { (_, indexPath) in
             let beer = self.viewModel.beers[indexPath.row]
-            let action = AddTryAction(try: Try(beerURL: beer.URL))
+            let action = ToggleTryAction(try: Try(beerURL: beer.URL))
             store.dispatch(action)
             self.tableView.setEditing(false, animated: true)
         }

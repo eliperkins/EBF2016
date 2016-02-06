@@ -51,3 +51,15 @@ struct RemoveTryAction: ActionType {
         return state
     }
 }
+
+struct ToggleTryAction: ActionType {
+    let `try`: Try
+
+    func reduce(state: AppState) -> AppState {
+        if state.tries.value.contains(`try`) {
+            return RemoveTryAction(try: `try`).reduce(state)
+        } else {
+            return AddTryAction(try: `try`).reduce(state)
+        }
+    }
+}
