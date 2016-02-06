@@ -20,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UINavigationController(rootViewController: BeersViewController(storeSignal: store.allBeers, title: "All")),
             UINavigationController(rootViewController: BeersViewController(storeSignal: store.wantedBeers, title: "Wanted")),
             UINavigationController(rootViewController: BeersViewController(storeSignal: store.triedBeers, title: "Tried")),
+            UINavigationController(rootViewController: BeersViewController(storeSignal: store.wantedAndNotTried, title: "To Have")),
             UINavigationController(rootViewController: BeersViewController(storeSignal: store.hotBeers, title: "Hot")),
             UINavigationController(rootViewController: BreweryListViewController())
         ]

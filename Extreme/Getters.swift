@@ -22,6 +22,16 @@ extension Store {
         }
     }
 
+    var wantedAndNotTried: SignalProducer<[Beer], NoError> {
+        return combineLatest(self.state.value.beers.producer, self.state.value.tries.producer, self.state.value.wants.producer)
+            .flatMap(.Merge) { (beer, tries, wants) -> SignalProducer<[Beer], NoError> in
+                let wantedBeerURLs = wants.map { $0.beerURL }
+                let triedBeerURLs = tries.map { $0.beerURL }
+                let wantedAndNotTriedURLs = wantedBeerURLs.filter { !triedBeerURLs.contains($0) }
+                return SignalProducer(value: beer.filter { wantedAndNotTriedURLs.contains($0.URL) })
+        }
+    }
+
     var hotBeers: SignalProducer<[Beer], NoError> {
         return state.value.beers.producer.map {
             return $0.sort { $0.hotness() > $1.hotness() }
