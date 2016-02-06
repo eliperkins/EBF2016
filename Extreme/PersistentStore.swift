@@ -1,6 +1,7 @@
 import Foundation
 import ReactiveCocoa
 
+// Don't judge me for my sins in here.
 class PersistentStore<T: Storable> {
     func values() -> [String] {
         let array = NSUserDefaults.standardUserDefaults().arrayForKey(T.key()) ?? []
