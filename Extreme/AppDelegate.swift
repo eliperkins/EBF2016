@@ -15,7 +15,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        window?.rootViewController = UINavigationController(rootViewController: BeersViewController())
+        let tabBarController = UITabBarController()
+        tabBarController.viewControllers = [
+            UINavigationController(rootViewController: BeersViewController(storeSignal: store.allBeers, title: "All")),
+            UINavigationController(rootViewController: BeersViewController(storeSignal: store.wantedBeers, title: "Wanted")),
+            UINavigationController(rootViewController: BeersViewController(storeSignal: store.triedBeers, title: "Tried")),
+            UINavigationController(rootViewController: BeersViewController(storeSignal: store.hotBeers, title: "Hot")),
+            UINavigationController(rootViewController: BreweryListViewController())
+        ]
+        window?.rootViewController = tabBarController
         window?.makeKeyAndVisible()
 
         return true

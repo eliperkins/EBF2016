@@ -2,27 +2,48 @@ import ReactiveCocoa
 import Result
 
 extension Store {
-    var activeBeers: SignalProducer<[Beer], NoError> {
-        return state.value.filter.producer.flatMap(.Latest) { (filter: Filter) -> SignalProducer<[Beer], NoError> in
-            switch filter {
-            case .All: return self.state.value.beers.producer
-            case .Tries:
-                return combineLatest(self.state.value.beers.producer, self.state.value.tries.producer)
-                    .flatMap(.Merge) { (beer, tries) -> SignalProducer<[Beer], NoError> in
-                        let triedBeerURLs = tries.map { $0.beerURL }
-                        return SignalProducer(value: beer.filter { triedBeerURLs.contains($0.URL) })
-                    }
-            case .Wants:
-                return combineLatest(self.state.value.beers.producer, self.state.value.wants.producer)
-                    .flatMap(.Merge) { (beer, wants) -> SignalProducer<[Beer], NoError> in
-                        let wantedBeerURLs = wants.map { $0.beerURL }
-                        return SignalProducer(value: beer.filter { wantedBeerURLs.contains($0.URL) })
-                    }
-            case .Hot:
-                return self.state.value.beers.producer.map {
-                    return $0.sort { $0.hotness() > $1.hotness() }
+    var allBeers: SignalProducer<[Beer], NoError> {
+        return state.value.beers.producer
+    }
+
+    var wantedBeers: SignalProducer<[Beer], NoError> {
+        return combineLatest(self.state.value.beers.producer, self.state.value.wants.producer)
+            .flatMap(.Merge) { (beer, wants) -> SignalProducer<[Beer], NoError> in
+                let wantedBeerURLs = wants.map { $0.beerURL }
+                return SignalProducer(value: beer.filter { wantedBeerURLs.contains($0.URL) })
+        }
+    }
+
+    var triedBeers: SignalProducer<[Beer], NoError> {
+        return combineLatest(self.state.value.beers.producer, self.state.value.tries.producer)
+            .flatMap(.Merge) { (beer, tries) -> SignalProducer<[Beer], NoError> in
+                let triedBeerURLs = tries.map { $0.beerURL }
+                return SignalProducer(value: beer.filter { triedBeerURLs.contains($0.URL) })
+        }
+    }
+
+    var hotBeers: SignalProducer<[Beer], NoError> {
+        return state.value.beers.producer.map {
+            return $0.sort { $0.hotness() > $1.hotness() }
+        }
+    }
+
+    var allBreweries: SignalProducer<[Brewery], NoError> {
+        return state.value.beers.producer.flatMap(.Latest, transform: { (beers) -> SignalProducer<[Brewery], NoError> in
+            let breweryNames: [String] = beers.map { $0.brewery }.reduce([]) {
+                if $0.contains($1) {
+                    return $0
                 }
+
+                return $0 + [$1]
             }
+            return SignalProducer(value: breweryNames.map(Brewery.init))
+        })
+    }
+
+    func beersByBrewery(brewery: Brewery) -> SignalProducer<[Beer], NoError> {
+        return state.value.beers.producer.map {
+            return $0.filter { $0.brewery == brewery.name }
         }
     }
 }

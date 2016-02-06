@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		267D90551C65A320003C8887 /* BreweryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267D90541C65A320003C8887 /* BreweryListViewController.swift */; };
+		267D90571C65A3E7003C8887 /* BreweryListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267D90561C65A3E7003C8887 /* BreweryListViewModel.swift */; };
 		26E2706C1C65250400C8748C /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E2706B1C65250400C8748C /* AppState.swift */; };
 		26E2706E1C652B3000C8748C /* BeerListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E2706D1C652B3000C8748C /* BeerListViewModel.swift */; };
 		26E270711C6534E400C8748C /* BeerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E270701C6534E400C8748C /* BeerTableViewCell.swift */; };
@@ -16,7 +18,6 @@
 		26E2707A1C653CF700C8748C /* RatingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E270791C653CF700C8748C /* RatingsViewModel.swift */; };
 		26E2707C1C65436A00C8748C /* Want.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E2707B1C65436A00C8748C /* Want.swift */; };
 		26E2707E1C65438200C8748C /* Try.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E2707D1C65438200C8748C /* Try.swift */; };
-		26E270841C654ADB00C8748C /* FilterSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E270831C654ADB00C8748C /* FilterSegmentedControl.swift */; };
 		26E270861C65657600C8748C /* AppActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E270851C65657600C8748C /* AppActions.swift */; };
 		26E270881C6567D400C8748C /* Getters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E270871C6567D400C8748C /* Getters.swift */; };
 		26E2708A1C657B5800C8748C /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E270891C657B5800C8748C /* Colors.swift */; };
@@ -77,6 +78,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		267D90541C65A320003C8887 /* BreweryListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BreweryListViewController.swift; sourceTree = "<group>"; };
+		267D90561C65A3E7003C8887 /* BreweryListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BreweryListViewModel.swift; sourceTree = "<group>"; };
 		26E2706B1C65250400C8748C /* AppState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		26E2706D1C652B3000C8748C /* BeerListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeerListViewModel.swift; sourceTree = "<group>"; };
 		26E270701C6534E400C8748C /* BeerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeerTableViewCell.swift; sourceTree = "<group>"; };
@@ -86,7 +89,6 @@
 		26E270791C653CF700C8748C /* RatingsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingsViewModel.swift; sourceTree = "<group>"; };
 		26E2707B1C65436A00C8748C /* Want.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Want.swift; sourceTree = "<group>"; };
 		26E2707D1C65438200C8748C /* Try.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Try.swift; sourceTree = "<group>"; };
-		26E270831C654ADB00C8748C /* FilterSegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterSegmentedControl.swift; sourceTree = "<group>"; };
 		26E270851C65657600C8748C /* AppActions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppActions.swift; sourceTree = "<group>"; };
 		26E270871C6567D400C8748C /* Getters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Getters.swift; sourceTree = "<group>"; };
 		26E270891C657B5800C8748C /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 				26E270731C653B8E00C8748C /* BeerViewModel.swift */,
 				26E270751C653BF300C8748C /* RatingViewModel.swift */,
 				26E270791C653CF700C8748C /* RatingsViewModel.swift */,
+				267D90561C65A3E7003C8887 /* BreweryListViewModel.swift */,
 			);
 			name = "View Models";
 			sourceTree = "<group>";
@@ -159,7 +162,6 @@
 			children = (
 				26E270701C6534E400C8748C /* BeerTableViewCell.swift */,
 				26E270771C653CDB00C8748C /* RatingsView.swift */,
-				26E270831C654ADB00C8748C /* FilterSegmentedControl.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -268,6 +270,7 @@
 			isa = PBXGroup;
 			children = (
 				26F148F51C650D35001F618A /* BeersViewController.swift */,
+				267D90541C65A320003C8887 /* BreweryListViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -435,7 +438,6 @@
 				26E270761C653BF300C8748C /* RatingViewModel.swift in Sources */,
 				26E2708C1C65878D00C8748C /* PersistentStore.swift in Sources */,
 				26E270861C65657600C8748C /* AppActions.swift in Sources */,
-				26E270841C654ADB00C8748C /* FilterSegmentedControl.swift in Sources */,
 				26E2708A1C657B5800C8748C /* Colors.swift in Sources */,
 				26F149351C651F89001F618A /* BeerStore.swift in Sources */,
 				26E270781C653CDB00C8748C /* RatingsView.swift in Sources */,
@@ -444,6 +446,8 @@
 				26F148F61C650D35001F618A /* BeersViewController.swift in Sources */,
 				26E2707C1C65436A00C8748C /* Want.swift in Sources */,
 				26E2707E1C65438200C8748C /* Try.swift in Sources */,
+				267D90551C65A320003C8887 /* BreweryListViewController.swift in Sources */,
+				267D90571C65A3E7003C8887 /* BreweryListViewModel.swift in Sources */,
 				26F149311C651F7B001F618A /* Beer.swift in Sources */,
 				26F148F41C650D35001F618A /* AppDelegate.swift in Sources */,
 			);

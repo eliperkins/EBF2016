@@ -1,6 +1,7 @@
 import UIKit
 import ReactiveCocoa
 import SafariServices
+import Result
 
 class BeersViewController: UITableViewController {
 
@@ -10,15 +11,25 @@ class BeersViewController: UITableViewController {
         }
     }
 
+    let storeSignal: SignalProducer<[Beer], NoError>
+
+    init(storeSignal: SignalProducer<[Beer], NoError>, title: String) {
+        self.storeSignal = storeSignal
+        super.init(style: .Plain)
+        self.title = title
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.registerClass(BeerTableViewCell.self, forCellReuseIdentifier: "BeerCell")
         tableView.estimatedRowHeight = 80
         tableView.rowHeight = UITableViewAutomaticDimension
 
-        navigationItem.titleView = FilterSegmentedControl()
-
-        store.activeBeers.observeOn(QueueScheduler.mainQueueScheduler).startWithNext {
+        storeSignal.observeOn(QueueScheduler.mainQueueScheduler).startWithNext {
             self.viewModel = BeerListViewModel(beers: $0)
         }
     }
@@ -32,7 +43,7 @@ extension BeersViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let beer = self.viewModel.beers[indexPath.row]
         let viewController = SFSafariViewController(URL: beer.URL)
-        navigationController?.pushViewController(viewController, animated: true)
+        presentViewController(viewController, animated: true, completion: nil)
     }
 
     override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
