@@ -1,0 +1,4 @@
+github "thoughtbot/Delta" "v0.1.0"
+github "lyft/Mapper" "1.0.3"
+github "antitypical/Result" "1.0.2"
+github "ReactiveCocoa/ReactiveCocoa" "v4.0.1"

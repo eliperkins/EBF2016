@@ -1,0 +1,4 @@
+github "thoughtbot/Delta"
+github "antitypical/Result"
+github "lyft/Mapper"
+github "ReactiveCocoa/ReactiveCocoa"
