@@ -47,7 +47,7 @@ extension BreweryListViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let brewery = viewModel.breweries[indexPath.row]
-        let beerSignal = store.beersByBrewery(brewery)
+        let beerSignal = store.beers(by: brewery)
         let viewController = BeersViewController(storeSignal: beerSignal, title: brewery.name)
         navigationController?.pushViewController(viewController, animated: true)
     }

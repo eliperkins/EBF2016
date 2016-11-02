@@ -3,11 +3,11 @@ import UIKit
 class RatingsView: UIStackView {
     var viewModel: RatingsViewModel? {
         didSet {
-        guard let viewModel = viewModel else { return }
-        usersRatingView.ratingLabel.text = viewModel.usersRatingViewModel.text
-        brosRatingView.ratingLabel.text = viewModel.brosRatingViewModel.text
-        usersRatingView.ratingLabel.textColor = viewModel.usersRatingViewModel.textColor
-        brosRatingView.ratingLabel.textColor = viewModel.brosRatingViewModel.textColor
+            guard let viewModel = viewModel else { return }
+            usersRatingView.ratingLabel.text = viewModel.usersRatingViewModel.text
+            brosRatingView.ratingLabel.text = viewModel.brosRatingViewModel.text
+            usersRatingView.ratingLabel.textColor = viewModel.usersRatingViewModel.textColor
+            brosRatingView.ratingLabel.textColor = viewModel.brosRatingViewModel.textColor
         }
     }
 

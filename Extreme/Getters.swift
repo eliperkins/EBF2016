@@ -52,7 +52,7 @@ extension Store {
         })
     }
 
-    func beersByBrewery(_ brewery: Brewery) -> SignalProducer<[Beer], NoError> {
+    func beers(by brewery: Brewery) -> SignalProducer<[Beer], NoError> {
         return state.value.beers.producer.map {
             return $0.filter { $0.brewery == brewery.name }
         }

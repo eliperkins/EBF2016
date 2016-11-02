@@ -4,14 +4,14 @@ class BeerTableViewCell: UITableViewCell {
 
     var viewModel: BeerViewModel? {
         didSet {
-        nameLabel.text = viewModel?.beer.name
-        breweryLabel.text = viewModel?.beer.brewery
-        styleLabel.text = viewModel?.beer.style
-        ratingsView.viewModel = viewModel?.ratingsViewModel
+            nameLabel.text = viewModel?.beer.name
+            breweryLabel.text = viewModel?.beer.brewery
+            styleLabel.text = viewModel?.beer.style
+            ratingsView.viewModel = viewModel?.ratingsViewModel
 
-        if let abv = viewModel?.beer.ABV {
-            abvLabel.text = "\(abv)%"
-        }
+            if let abv = viewModel?.beer.ABV {
+                abvLabel.text = "\(abv)%"
+            }
         }
     }
 

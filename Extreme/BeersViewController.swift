@@ -8,7 +8,7 @@ class BeersViewController: UITableViewController {
 
     var viewModel = BeerListViewModel(beers: []) {
         didSet {
-            self.tableView.reloadData()
+            tableView.reloadData()
         }
     }
 
