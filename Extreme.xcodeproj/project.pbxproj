@@ -20,7 +20,6 @@
 		26E2707A1C653CF700C8748C /* RatingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E270791C653CF700C8748C /* RatingsViewModel.swift */; };
 		26E2707C1C65436A00C8748C /* Want.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E2707B1C65436A00C8748C /* Want.swift */; };
 		26E2707E1C65438200C8748C /* Try.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E2707D1C65438200C8748C /* Try.swift */; };
-		26E270861C65657600C8748C /* AppActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E270851C65657600C8748C /* AppActions.swift */; };
 		26E270881C6567D400C8748C /* Getters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E270871C6567D400C8748C /* Getters.swift */; };
 		26E2708A1C657B5800C8748C /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E270891C657B5800C8748C /* Colors.swift */; };
 		26E2708C1C65878D00C8748C /* PersistentStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E2708B1C65878D00C8748C /* PersistentStore.swift */; };
@@ -280,7 +279,6 @@
 		26E270791C653CF700C8748C /* RatingsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingsViewModel.swift; sourceTree = "<group>"; };
 		26E2707B1C65436A00C8748C /* Want.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Want.swift; sourceTree = "<group>"; };
 		26E2707D1C65438200C8748C /* Try.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Try.swift; sourceTree = "<group>"; };
-		26E270851C65657600C8748C /* AppActions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppActions.swift; sourceTree = "<group>"; };
 		26E270871C6567D400C8748C /* Getters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Getters.swift; sourceTree = "<group>"; };
 		26E270891C657B5800C8748C /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		26E2708B1C65878D00C8748C /* PersistentStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistentStore.swift; sourceTree = "<group>"; };
@@ -520,7 +518,6 @@
 			isa = PBXGroup;
 			children = (
 				26F149361C651F92001F618A /* BeerActions.swift */,
-				26E270851C65657600C8748C /* AppActions.swift */,
 			);
 			name = Actions;
 			sourceTree = "<group>";
@@ -907,7 +904,6 @@
 				26E2706C1C65250400C8748C /* AppState.swift in Sources */,
 				26E270761C653BF300C8748C /* RatingViewModel.swift in Sources */,
 				26E2708C1C65878D00C8748C /* PersistentStore.swift in Sources */,
-				26E270861C65657600C8748C /* AppActions.swift in Sources */,
 				26E2708A1C657B5800C8748C /* Colors.swift in Sources */,
 				26F149351C651F89001F618A /* BeerStore.swift in Sources */,
 				26E270781C653CDB00C8748C /* RatingsView.swift in Sources */,
