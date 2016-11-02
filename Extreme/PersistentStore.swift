@@ -1,20 +1,21 @@
 import Foundation
 import ReactiveCocoa
+import ReactiveSwift
 
 // Don't judge me for my sins in here.
 class PersistentStore<T: Storable> {
     func values() -> [String] {
-        let array = NSUserDefaults.standardUserDefaults().arrayForKey(T.key()) ?? []
+        let array = UserDefaults.standard.array(forKey: T.key()) ?? []
         return array.flatMap { $0 as? String }
     }
 
-    func save(values: [T]) {
-        NSUserDefaults.standardUserDefaults().setObject(values.map { $0.identifier }, forKey: T.key())
-        NSUserDefaults.standardUserDefaults().synchronize()
+    func save(_ values: [T]) {
+        UserDefaults.standard.set(values.map { $0.identifier }, forKey: T.key())
+        UserDefaults.standard.synchronize()
     }
 
-    func subscribe(property: MutableProperty<[T]>) -> Disposable {
-        return property.producer.on(next: save).start()
+    func subscribe(_ property: MutableProperty<[T]>) -> Disposable {
+        return property.producer.on(value: save).start()
     }
 }
 

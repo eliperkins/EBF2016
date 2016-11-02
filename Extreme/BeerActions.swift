@@ -25,9 +25,9 @@ struct ToggleWantAction: ActionType {
 
     func reduce(state: AppState) -> AppState {
         if state.wants.value.contains(want) {
-            return RemoveWantAction(want: want).reduce(state)
+            return RemoveWantAction(want: want).reduce(state: state)
         } else {
-            return AddWantAction(want: want).reduce(state)
+            return AddWantAction(want: want).reduce(state: state)
         }
     }
 }
@@ -57,9 +57,9 @@ struct ToggleTryAction: ActionType {
 
     func reduce(state: AppState) -> AppState {
         if state.tries.value.contains(`try`) {
-            return RemoveTryAction(try: `try`).reduce(state)
+            return RemoveTryAction(try: `try`).reduce(state: state)
         } else {
-            return AddTryAction(try: `try`).reduce(state)
+            return AddTryAction(try: `try`).reduce(state: state)
         }
     }
 }

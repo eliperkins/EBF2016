@@ -1,4 +1,4 @@
-github "thoughtbot/Delta"
+github "thoughtbot/Delta" "swift-3.0"
 github "antitypical/Result"
 github "lyft/Mapper"
-github "ReactiveCocoa/ReactiveCocoa"
+github "ReactiveCocoa/ReactiveCocoa" "5.0.0-alpha.3"

@@ -1,3 +1,4 @@
+import ReactiveSwift
 import ReactiveCocoa
 import Delta
 import Result
@@ -17,8 +18,8 @@ struct Store: StoreType {
 let wantStore = PersistentStore<Want>()
 let tryStore = PersistentStore<Try>()
 
-let wants = wantStore.values().map { Want(beerURL: NSURL(string: $0)!) }
-let tries = tryStore.values().map { Try(beerURL: NSURL(string: $0)!) }
+let wants = wantStore.values().map { Want(beerURL: URL(string: $0)!) }
+let tries = tryStore.values().map { Try(beerURL: URL(string: $0)!) }
 
 let initialState = AppState(wants: wants, tries: tries)
 var store = Store(state: initialState)

@@ -9,8 +9,8 @@ struct RatingViewModel {
     init(rating: Int) {
         self.rating = rating
         switch rating {
-        case 95...100: textColor = UIColor(named: .Blue)
-        case 90...95: textColor = UIColor(named: .Green)
+        case 95...100: textColor = UIColor(named: .blue)
+        case 90...95: textColor = UIColor(named: .green)
         default: textColor = UIColor(white: 0.4125, alpha: 1.0)
         }
         self.text = rating == 0 ? "-" : String(rating)

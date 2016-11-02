@@ -1,7 +1,7 @@
 import Foundation
 
 struct Want: Equatable {
-    let beerURL: NSURL
+    let beerURL: URL
 }
 
 func == (lhs: Want, rhs: Want) -> Bool {

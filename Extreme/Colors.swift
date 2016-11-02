@@ -15,19 +15,19 @@ extension UIColor {
     enum Name {
         /// <span style="display:block;width:3em;height:2em;border:1px solid black;background:#007aff"></span>
         /// Alpha: 100% <br/> (0x007affff)
-        case Blue
+        case blue
         /// <span style="display:block;width:3em;height:2em;border:1px solid black;background:#5fdf00"></span>
         /// Alpha: 100% <br/> (0x5fdf00ff)
-        case Green
+        case green
         /// <span style="display:block;width:3em;height:2em;border:1px solid black;background:#ff2851"></span>
         /// Alpha: 100% <br/> (0xff2851ff)
-        case Orange
+        case orange
 
         var rgbaValue: UInt32! {
             switch self {
-            case .Blue: return 0x007affff
-            case .Green: return 0x5fdf00ff
-            case .Orange: return 0xff2851ff
+            case .blue: return 0x007affff
+            case .green: return 0x5fdf00ff
+            case .orange: return 0xff2851ff
             }
         }
     }

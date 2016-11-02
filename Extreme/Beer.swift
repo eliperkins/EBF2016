@@ -11,7 +11,7 @@ struct Beer {
     let userScore: String
     let brosScore: String
     let brewery: String
-    let URL: NSURL
+    let URL: Foundation.URL
 }
 
 extension Beer: Mappable {
@@ -29,12 +29,12 @@ extension Beer: Mappable {
         self.brewery = brewery
         let nameAndBrewery: String = try map.from("name")
         let nameComponents = nameAndBrewery.characters
-            .split("-")
+            .split(separator: "-")
             .flatMap(String.init)
             .filter {
                 return $0 != " \(brewery)"
             }
-            .joinWithSeparator("-")
+            .joined(separator: "-")
         name = nameComponents
     }
 }

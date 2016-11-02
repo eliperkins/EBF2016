@@ -11,14 +11,14 @@ class RatingsView: UIStackView {
         }
     }
 
-    private let usersRatingView: RatingView = {
+    fileprivate let usersRatingView: RatingView = {
         let view = RatingView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.titleLabel.text = "Users"
         return view
     }()
 
-    private let brosRatingView: RatingView = {
+    fileprivate let brosRatingView: RatingView = {
         let view = RatingView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.titleLabel.text = "Bros"
@@ -32,16 +32,16 @@ class RatingsView: UIStackView {
     override init(frame: CGRect) {
         super.init(frame: frame)
 
-        axis = .Horizontal
+        axis = .horizontal
         spacing = 8
 
-        distribution = .FillEqually
+        distribution = .fillEqually
 
         addArrangedSubview(usersRatingView)
         addArrangedSubview(brosRatingView)
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }
@@ -50,18 +50,18 @@ private class RatingView: UIStackView {
     let titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.preferredFontForTextStyle(UIFontTextStyleCallout)
+        label.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.callout)
         label.textColor = UIColor(white: 0.6, alpha: 1.0)
-        label.textAlignment = .Center
+        label.textAlignment = .center
         return label
     }()
 
     let ratingLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.preferredFontForTextStyle(UIFontTextStyleTitle3)
+        label.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.title3)
         label.textColor = UIColor(white: 0.8, alpha: 1.0)
-        label.textAlignment = .Center
+        label.textAlignment = .center
         return label
     }()
 
@@ -72,13 +72,13 @@ private class RatingView: UIStackView {
     override init(frame: CGRect) {
         super.init(frame: frame)
 
-        axis = .Vertical
+        axis = .vertical
 
         addArrangedSubview(titleLabel)
         addArrangedSubview(ratingLabel)
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }

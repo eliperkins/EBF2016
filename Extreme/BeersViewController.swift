@@ -1,4 +1,5 @@
 import UIKit
+import ReactiveSwift
 import ReactiveCocoa
 import SafariServices
 import Result
@@ -15,7 +16,7 @@ class BeersViewController: UITableViewController {
 
     init(storeSignal: SignalProducer<[Beer], NoError>, title: String) {
         self.storeSignal = storeSignal
-        super.init(style: .Plain)
+        super.init(style: .plain)
         self.title = title
     }
     
@@ -25,49 +26,49 @@ class BeersViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.registerClass(BeerTableViewCell.self, forCellReuseIdentifier: "BeerCell")
+        tableView.register(BeerTableViewCell.self, forCellReuseIdentifier: "BeerCell")
         tableView.estimatedRowHeight = 80
         tableView.rowHeight = UITableViewAutomaticDimension
 
-        storeSignal.observeOn(QueueScheduler.mainQueueScheduler).startWithNext {
+        storeSignal.observe(on: QueueScheduler.main).startWithValues {
             self.viewModel = BeerListViewModel(beers: $0)
         }
     }
 }
 
 extension BeersViewController {
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.beers.count
     }
 
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let beer = self.viewModel.beers[indexPath.row]
-        let viewController = SFSafariViewController(URL: beer.URL)
-        presentViewController(viewController, animated: true, completion: nil)
+        let viewController = SFSafariViewController(url: beer.URL)
+        present(viewController, animated: true, completion: nil)
     }
 
-    override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
-        let wantAction = UITableViewRowAction(style: .Default, title: "Want") { (_, indexPath) in
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let wantAction = UITableViewRowAction(style: .default, title: "Want") { (_, indexPath) in
             let beer = self.viewModel.beers[indexPath.row]
             let action = ToggleWantAction(want: Want(beerURL: beer.URL))
             store.dispatch(action)
             self.tableView.setEditing(false, animated: true)
         }
-        wantAction.backgroundColor = UIColor(named: .Orange)
+        wantAction.backgroundColor = UIColor(named: .orange)
 
-        let triedAction = UITableViewRowAction(style: .Default, title: "Tried") { (_, indexPath) in
+        let triedAction = UITableViewRowAction(style: .default, title: "Tried") { (_, indexPath) in
             let beer = self.viewModel.beers[indexPath.row]
             let action = ToggleTryAction(try: Try(beerURL: beer.URL))
             store.dispatch(action)
             self.tableView.setEditing(false, animated: true)
         }
-        triedAction.backgroundColor = UIColor(named: .Blue)
+        triedAction.backgroundColor = UIColor(named: .blue)
 
         return [wantAction, triedAction]
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("BeerCell", forIndexPath: indexPath)
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "BeerCell", for: indexPath)
         if let beerCell = cell as? BeerTableViewCell {
             let beer = viewModel.beers[indexPath.row]
             beerCell.viewModel = BeerViewModel(beer: beer)

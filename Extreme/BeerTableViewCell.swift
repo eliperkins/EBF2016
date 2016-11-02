@@ -18,7 +18,7 @@ class BeerTableViewCell: UITableViewCell {
     let stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .Vertical
+        stackView.axis = .vertical
         stackView.spacing = 4
         return stackView
     }()
@@ -26,7 +26,7 @@ class BeerTableViewCell: UITableViewCell {
     let nameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
+        label.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.headline)
         label.numberOfLines = 0
         return label
     }()
@@ -34,23 +34,23 @@ class BeerTableViewCell: UITableViewCell {
     let breweryLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline)
+        label.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.subheadline)
         label.numberOfLines = 0
         return label
     }()
 
-    private let subheadlineStackView: UIStackView = {
+    fileprivate let subheadlineStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .Horizontal
-        stackView.distribution = .EqualSpacing
+        stackView.axis = .horizontal
+        stackView.distribution = .equalSpacing
         return stackView
     }()
 
     let styleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline)
+        label.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.subheadline)
         label.textColor = UIColor(white: 0.4125, alpha: 1.0)
         return label
     }()
@@ -58,7 +58,7 @@ class BeerTableViewCell: UITableViewCell {
     let abvLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline)
+        label.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.subheadline)
         label.textColor = UIColor(white: 0.4125, alpha: 1.0)
         return label
     }()
@@ -82,14 +82,14 @@ class BeerTableViewCell: UITableViewCell {
 
         let margins = contentView.layoutMarginsGuide
         let constraints = [
-            stackView.leadingAnchor.constraintEqualToAnchor(margins.leadingAnchor),
-            stackView.topAnchor.constraintEqualToAnchor(margins.topAnchor),
-            stackView.trailingAnchor.constraintEqualToAnchor(margins.trailingAnchor),
-            stackView.bottomAnchor.constraintEqualToAnchor(margins.bottomAnchor)
+            stackView.leadingAnchor.constraint(equalTo: margins.leadingAnchor),
+            stackView.topAnchor.constraint(equalTo: margins.topAnchor),
+            stackView.trailingAnchor.constraint(equalTo: margins.trailingAnchor),
+            stackView.bottomAnchor.constraint(equalTo: margins.bottomAnchor)
         ]
 
         for constraint in constraints {
-            constraint.active = true
+            constraint.isActive = true
         }
     }
 
