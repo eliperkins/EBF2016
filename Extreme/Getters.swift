@@ -8,7 +8,8 @@ extension Store {
     }
 
     var wantedBeers: SignalProducer<[Beer], NoError> {
-        return SignalProducer.combineLatest(self.state.value.beers.producer, self.state.value.wants.producer)
+        return SignalProducer
+            .combineLatest(state.value.beers.producer, state.value.wants.producer)
             .flatMap(.merge) { (beer, wants) -> SignalProducer<[Beer], NoError> in
                 let wantedBeerURLs = wants.map { $0.beerURL }
                 return SignalProducer(value: beer.filter { wantedBeerURLs.contains($0.URL) })
@@ -16,7 +17,8 @@ extension Store {
     }
 
     var triedBeers: SignalProducer<[Beer], NoError> {
-        return SignalProducer.combineLatest(self.state.value.beers.producer, self.state.value.tries.producer)
+        return SignalProducer
+            .combineLatest(state.value.beers.producer, state.value.tries.producer)
             .flatMap(.merge) { (beer, tries) -> SignalProducer<[Beer], NoError> in
                 let triedBeerURLs = tries.map { $0.beerURL }
                 return SignalProducer(value: beer.filter { triedBeerURLs.contains($0.URL) })
@@ -24,7 +26,8 @@ extension Store {
     }
 
     var wantedAndNotTried: SignalProducer<[Beer], NoError> {
-        return SignalProducer.combineLatest(self.state.value.beers.producer, self.state.value.tries.producer, self.state.value.wants.producer)
+        return SignalProducer
+            .combineLatest(state.value.beers.producer, state.value.tries.producer, state.value.wants.producer)
             .flatMap(.merge) { (beer, tries, wants) -> SignalProducer<[Beer], NoError> in
                 let wantedBeerURLs = wants.map { $0.beerURL }
                 let triedBeerURLs = tries.map { $0.beerURL }
@@ -40,7 +43,7 @@ extension Store {
     }
 
     var allBreweries: SignalProducer<[Brewery], NoError> {
-        return state.value.beers.producer.flatMap(.latest, transform: { (beers) -> SignalProducer<[Brewery], NoError> in
+        return state.value.beers.producer.flatMap(.latest) { (beers) -> SignalProducer<[Brewery], NoError> in
             let breweryNames: [String] = beers.map { $0.brewery }.reduce([]) {
                 if $0.contains($1) {
                     return $0
@@ -49,7 +52,7 @@ extension Store {
                 return $0 + [$1]
             }
             return SignalProducer(value: breweryNames.map(Brewery.init))
-        })
+        }
     }
 
     func beers(by brewery: Brewery) -> SignalProducer<[Beer], NoError> {
