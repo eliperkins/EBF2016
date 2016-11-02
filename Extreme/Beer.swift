@@ -16,8 +16,6 @@ struct Beer {
 
 extension Beer: Mappable {
     init(map: Mapper) throws {
-        let nameAndBrewery: String = try map.from("name")
-        name = nameAndBrewery.characters.split("-").first.flatMap(String.init) ?? ""
         try style = map.from("style")
         try ABV = map.from("abv")
         try reviews = map.from("reviews")
@@ -25,7 +23,18 @@ extension Beer: Mappable {
         try avg = map.from("avg")
         try userScore = map.from("ba_score")
         try brosScore = map.from("bro_score")
-        try brewery = map.from("brewery")
         try URL = map.from("url")
+
+        let brewery: String = try map.from("brewery")
+        self.brewery = brewery
+        let nameAndBrewery: String = try map.from("name")
+        let nameComponents = nameAndBrewery.characters
+            .split("-")
+            .flatMap(String.init)
+            .filter {
+                return $0 != " \(brewery)"
+            }
+            .joinWithSeparator("-")
+        name = nameComponents
     }
 }
